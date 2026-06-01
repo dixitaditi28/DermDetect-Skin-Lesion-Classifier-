@@ -38,4 +38,43 @@ for col in df.columns:
 print(f"\nSuccess! Detected Label Column: {LABEL_COL}")
 print(f"Success! Detected File Column: {FILE_COL}")
 
+# --- Step 4: Count the classes and draw a graph ---
+
+# 1. Count the M&Ms
+# df[LABEL_COL] grabs just the 'Target' column from our spreadsheet.
+# .value_counts() automatically groups identical numbers together and counts them.
+class_counts = df[LABEL_COL].value_counts()
+
+print("\n--- Class Distribution ---")
+print(class_counts)
+
+# Check for severe imbalance (ratio > 3x)
+max_class = class_counts.max()
+min_class = class_counts.min()
+if max_class / min_class > 3:
+    print(f"\nWARNING: Severe class imbalance detected! (Ratio: {max_class/min_class:.1f}x)")
+    print("We will fix this on Day 3 using a Weighted Random Sampler.")
+
+# 2. Set up the canvas
+# plt is our nickname for Matplotlib. 
+# figsize=(10, 6) tells it to create a rectangular canvas 10 inches wide, 6 inches tall.
+plt.figure(figsize=(10, 6))
+
+# 3. Draw the chart
+# kind='bar' tells pandas to draw vertical bars using the counts we just calculated.
+class_counts.plot(kind='bar')
+
+# 4. Add labels so humans can read it
+plt.title('Distribution of Skin Lesions in Dataset')
+plt.xlabel('Lesion Type (Target Code)')
+plt.ylabel('Number of Images')
+
+# 5. Clean up and save
+# tight_layout() makes sure no text gets cut off the edges of the image.
+plt.tight_layout()
+# savefig() actually saves the drawing to your hard drive as a PNG file.
+plt.savefig('class_distribution.png')
+
+print("\nSuccess! Saved a bar chart to 'class_distribution.png' in your folder.")
+
 
