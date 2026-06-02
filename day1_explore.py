@@ -1,5 +1,5 @@
-import os
-import pandas as pd
+import os 
+import pandas as pd #takes spreadsheet from hard drive and loads into memory as a grid called dataframe df in short
 import matplotlib.pyplot as plt
 
 # we load the csv  File. note that its saved as csv and not as an xlxs because its microsoft proprietary format and we want to avoid any issues with that. 
@@ -7,6 +7,9 @@ import matplotlib.pyplot as plt
 # if you have an xlsx file, you can easily convert it to csv using excel or google sheets.
 csv_path = 'SkinLesions_train.csv'
 
+
+# we wrap the code in a try/except block this acts as a safety net
+# basically means try to open the file, but if it doesn't exist, catch the error and print a friendly message instead of crashing ugly red text onto the screen.
 try:
     # Read the CSV file into a pandas "DataFrame"
     df = pd.read_csv(csv_path)

@@ -5,7 +5,7 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from PIL import Image, UnidentifiedImageError
 
-# --- Constants from Day 1 ---
+#Constants from Day 1
 LABEL_COL = 'Target'
 FILE_COL = 'ID'
 NUM_CLASSES = 8
