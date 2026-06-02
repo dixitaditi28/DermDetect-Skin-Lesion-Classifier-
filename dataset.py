@@ -10,7 +10,7 @@ LABEL_COL = 'Target'
 FILE_COL = 'ID'
 NUM_CLASSES = 8
 
-# --- Image Transforms (The Photoshop Filters) ---
+# Image Transforms (The Photoshop Filters) 
 # ImageNet standard colors for normalization
 mean = [0.485, 0.456, 0.406]
 std = [0.229, 0.224, 0.225]
