@@ -11,15 +11,17 @@ csv_path = 'SkinLesions_train.csv'
 # we wrap the code in a try/except block this acts as a safety net
 # basically means try to open the file, but if it doesn't exist, catch the error and print a friendly message instead of crashing ugly red text onto the screen.
 try:
-    # Read the CSV file into a pandas "DataFrame"
+    # Read the CSV file into a pandas df
     df = pd.read_csv(csv_path)
     
+    # df tells us no. of rows and cols. .shape is a special attribute of dataframes that gives us this info as a tuple (rows, cols).
     print(f"Dataset loaded! The table has {df.shape[0]} rows and {df.shape[1]} columns.")
     print("\nHere are the first 3 rows:")
-    print(df.head(3))
+    print(df.head(3)) #head peeks at the top 3 rows od the spreadsheet
     
 except FileNotFoundError:
     print(f"\nERROR: I could not find '{csv_path}'.")
+    print ("Please make sure the file is in the exact same folder")
     exit()
 
 # --- Step 3: Find the important columns ---
