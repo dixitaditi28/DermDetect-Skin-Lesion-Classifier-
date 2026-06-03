@@ -5,7 +5,7 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from PIL import Image, UnidentifiedImageError
 
-#Constants from Day 1
+#Constants 
 LABEL_COL = 'Target'
 FILE_COL = 'ID'
 NUM_CLASSES = 8
@@ -33,10 +33,10 @@ val_test_transforms = transforms.Compose([
     transforms.Normalize(mean, std)
 ])
 
-# --- Step 2: The Dataset Class (The Librarian) ---
+# the librarian: dataset 
 class SkinLesionDataset(Dataset):
     
-    # 1. The Setup
+    # The Setup
     def __init__(self, csv_file, img_folder, transform=None):
         self.metadata = pd.read_csv(csv_file)
         self.img_folder = img_folder
@@ -68,7 +68,7 @@ class SkinLesionDataset(Dataset):
         if valid_images < total_rows:
             print(f"Skipped {total_rows - valid_images} missing images.")
 
-    #  The Counter
+    # The Counter
     def __len__(self):
         return len(self.image_paths)
 
