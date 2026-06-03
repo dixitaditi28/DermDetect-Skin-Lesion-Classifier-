@@ -68,11 +68,11 @@ class SkinLesionDataset(Dataset):
         if valid_images < total_rows:
             print(f"Skipped {total_rows - valid_images} missing images.")
 
-    # 2. The Counter
+    #  The Counter
     def __len__(self):
         return len(self.image_paths)
 
-    # 3. The Fetcher
+    # The Fetcher
     def __getitem__(self, index):
         img_path = self.image_paths[index]
         label = self.labels[index]
@@ -91,30 +91,30 @@ class SkinLesionDataset(Dataset):
             
         return image, label
     
-# --- Step 3: Test the Librarian ---
+# Test the Librarian 
 # This block only runs if we execute this specific file
 if __name__ == '__main__':
     
-    # 1. Hire the librarian for our training dataset
+    # Hire the librarian for our training dataset
     train_dataset = SkinLesionDataset(
         csv_file='SkinLesions_train.csv', 
         img_folder='Training_dataset_SkinLesions', 
         transform=train_transforms
     )
     
-    # 2. Ask the librarian for the very first image (Index 0)
+    #here we  Ask the librarian for the very first image (Index 0)
     first_image, first_label = train_dataset[0]
     
-    # 3. Print the results
+    #  Print the results
     print("\n--- Test Results ---")
     print(f"Success! Image converted to Tensor math. Shape: {first_image.shape}")
     print(f"Label integer (Should be exactly 1 less than the CSV target): {first_label}")    
-    # 4. Build the Conveyor Belt (DataLoader)
+    #  Build the Conveyor Belt (DataLoader)
     # batch_size=32 means hand the network 32 images at a time
     # shuffle=True acts like a dealer shuffling a deck of cards
     train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
     
-    # 5. Turn on the conveyor belt and grab the very first tray
+    #  Turn on the conveyor belt and grab the very first tray
     # iter() turns the belt on, next() grabs the first item that comes off
     batch_images, batch_labels = next(iter(train_loader))
     
